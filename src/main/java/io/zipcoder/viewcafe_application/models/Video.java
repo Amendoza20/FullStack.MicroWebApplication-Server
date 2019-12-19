@@ -2,13 +2,14 @@ package io.zipcoder.viewcafe_application.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Video {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long videoId;
     private String videoName;
     private String videoDescription;
@@ -18,6 +19,12 @@ public class Video {
     // Nullary Constructor
     public Video(){
 
+    }
+
+    public Video(String videoName, String videoDescription, Long userId) {
+        this.videoName = videoName;
+        this.videoDescription = videoDescription;
+        this.userId = userId;
     }
 
     public Long getVideoId() {

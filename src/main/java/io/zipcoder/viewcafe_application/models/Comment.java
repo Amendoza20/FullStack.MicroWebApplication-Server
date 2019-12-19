@@ -2,6 +2,7 @@ package io.zipcoder.viewcafe_application.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 public class Comment {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
     private Long videoId;
     private String comment;
@@ -19,6 +20,13 @@ public class Comment {
     // Nullary constructor
     public Comment(){
 
+    }
+
+    public Comment(Long videoId, String comment, Long userId, Date createDate) {
+        this.videoId = videoId;
+        this.comment = comment;
+        this.userId = userId;
+        this.createDate = createDate;
     }
 
     public Long getCommentId() {

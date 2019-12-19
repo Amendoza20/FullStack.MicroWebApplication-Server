@@ -2,13 +2,14 @@ package io.zipcoder.viewcafe_application.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Admin {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long adminId;
 
     private String adminName;
@@ -21,6 +22,15 @@ public class Admin {
     // Nullary Constructor
     public Admin(){
 
+    }
+
+    public Admin(String adminName, String firstName, String lastName, String password, String emailAddress, Boolean loggedIn) {
+        this.adminName = adminName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.emailAddress = emailAddress;
+        this.loggedIn = loggedIn;
     }
 
     public Long getAdminId() {

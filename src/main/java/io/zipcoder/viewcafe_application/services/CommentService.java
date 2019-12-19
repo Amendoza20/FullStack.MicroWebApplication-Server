@@ -19,7 +19,7 @@ public class CommentService {
     }
     // getting a single comment by single user
     public Comment getUserComment(Long userId){
-        return repository.findOne(userId);
+        return repository.findById(userId).get();
     }
     // getting all comments by a single user
     public Comment getAllUserComments(Long userId){
@@ -28,11 +28,11 @@ public class CommentService {
     }
     // getting comments on a single video
     public Comment getVideoComments(Long videoId){
-        return repository.findOne(videoId);
+        return repository.findById(videoId).get();
     }
     //deleting a comment
     public Boolean deleteComment(Long commentId){
-         repository.delete(commentId);
+         repository.delete(getUserComment(commentId));
          return true;
     }
 

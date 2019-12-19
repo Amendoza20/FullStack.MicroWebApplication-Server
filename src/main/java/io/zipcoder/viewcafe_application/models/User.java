@@ -2,13 +2,14 @@ package io.zipcoder.viewcafe_application.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     private String username;
@@ -23,6 +24,14 @@ public class User {
 
     }
 
+    public User(String username, String firstName, String lastName, String password, String emailAddress, Boolean loggedIn) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.emailAddress = emailAddress;
+        this.loggedIn = loggedIn;
+    }
 
     public String getUsername() {
         return username;

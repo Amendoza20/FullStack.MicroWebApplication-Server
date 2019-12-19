@@ -17,7 +17,7 @@ public class VideoService {
     }
 
     public Video show(Long videoId){
-        return repository.findOne(videoId);
+        return repository.findById(videoId).get();
     }
 
     public Video create(Video video){
@@ -25,14 +25,14 @@ public class VideoService {
     }
 
     public Video update(Long videoId, Video video){
-        Video ogVideo = repository.findOne(videoId);
+        Video ogVideo = repository.findById(videoId).get();
         ogVideo.setVideoDescription(video.getVideoDescription());
         ogVideo.setVideoName(video.getVideoName());
         return repository.save(video);
     }
 
     public Boolean delete(Long videoId){
-        repository.delete(videoId);
+        repository.delete(show(videoId));
         return true;
     }
 
